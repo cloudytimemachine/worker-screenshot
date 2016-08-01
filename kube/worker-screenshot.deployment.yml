@@ -10,6 +10,7 @@ spec:
       labels:
         app: worker-screenshot
     spec:
+      dnsPolicy: Default
       containers:
         - name: worker-screenshot
           imagePullPolicy: Never
