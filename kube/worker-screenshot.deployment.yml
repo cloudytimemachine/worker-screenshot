@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: worker-screenshot
+  labels:
+    app: worker-screenshot
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: worker-screenshot
+    spec:
+      containers:
+        - name: worker-screenshot
+          imagePullPolicy: Never
+          image: quay.io/cloudytimemachine/worker-screenshot:latest
+          env:
+          - name: GCLOUD_PROJECT
+            valueFrom:
+              secretKeyRef:
+                name: gcloud-bucket
+                key: gcloud-project
+          - name: GCLOUD_KEYFILE
+            value: /var/gcloud/gcloud.json
+          - name: BUCKET_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: worker-screenshot
+                key: bucket-name
+          volumeMounts:
+          - mountPath: /var/gcloud
+            name: gcloud-bucket
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 2
+            timeoutSeconds: 5
+      volumes:
+      - name: gcloud-bucket
+        secret:
+          secretName: gcloud-bucket

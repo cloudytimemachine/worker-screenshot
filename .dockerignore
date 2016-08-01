@@ -1,0 +1,6 @@
+.git
+kube
+node_modules
+script
+*.log
+*~
