@@ -12,7 +12,7 @@ minikube:
 minikube-context:
 	@kubectl config use-context minikube
 
-minikube-create: minikube-context
+minikube-create: minikube-context build
 	kubectl create -f kube/worker-screenshot.configmap.yml
 	kubectl create -f kube/worker-screenshot.deployment.yml
 
