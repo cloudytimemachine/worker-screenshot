@@ -14,6 +14,7 @@
     "bull": "^1.0.0-rc2",
     "dnscache": "0.0.4",
     "gcloud": "^0.36.0",
+    "jimp": "^0.2.27",
     "pkginfo": "^0.4.0",
     "restify": "^4.1.0",
     "restify-errors": "^4.2.3",
