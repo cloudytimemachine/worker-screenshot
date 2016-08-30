@@ -12,6 +12,11 @@ var queue = require('./lib/queue');
 
 process.title = 'worker';
 
+process.on('uncaughtException', function (err) {
+  console.error(err);
+  process.exit(1);
+})
+
 var port = process.env.PORT || 3000;
 
 var server = restify.createServer();
