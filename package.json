@@ -23,7 +23,7 @@
     "webshot": "^0.18.0"
   },
   "devDependencies": {
-    "k8s-scripts": "^2.0.0",
+    "k8s-scripts": "^2.1.0",
     "mocha": "^3.0.2"
   }
 }
