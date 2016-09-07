@@ -1,6 +1,6 @@
 {
   "name": "worker-screenshot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Service to capture requests for image capture",
   "main": "index.js",
   "scripts": {
