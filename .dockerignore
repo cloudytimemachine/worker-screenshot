@@ -1,5 +1,5 @@
 .git
-kube
+deploy
 node_modules
 script
 *.log

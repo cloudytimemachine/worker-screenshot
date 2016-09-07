@@ -13,7 +13,7 @@ spec:
       dnsPolicy: Default
       containers:
         - name: worker-screenshot
-          imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           image: quay.io/cloudytimemachine/worker-screenshot:latest
           env:
           - name: GCLOUD_PROJECT
