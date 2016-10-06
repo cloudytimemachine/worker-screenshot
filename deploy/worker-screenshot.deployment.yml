@@ -5,6 +5,9 @@ metadata:
   labels:
     app: worker-screenshot
 spec:
+  strategy:
+    type: RollingUpdate
+    maxUnavailable: 0
   template:
     metadata:
       labels:
