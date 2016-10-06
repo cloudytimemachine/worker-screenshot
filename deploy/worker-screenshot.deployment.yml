@@ -15,6 +15,13 @@ spec:
         - name: worker-screenshot
           imagePullPolicy: IfNotPresent
           image: quay.io/cloudytimemachine/worker-screenshot:latest
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 200m
+              memory: 100Mi
           env:
           - name: GCLOUD_PROJECT
             valueFrom:
