@@ -1,33 +1,37 @@
-var dns = require('dns');
-dnscache = require('dnscache')({
-  enable: true,
-  ttl: 300,
-  cachesize: 1000
-});
+var app = require('./lib');
+var bunyan = require('bunyan');
+var log = bunyan(require('./lib/config').bunyan);
 
-var restify = require('restify');
-var routes = require('./lib/routes');
-var gfs = require('./lib/gfs');
-var queue = require('./lib/queue');
+app.start(function onStart (err) {
+  if (err) {
+    log.error(err);
+    process.exit();
+  }
+  process.on('uncaughtException', function (err) {
+    log.error({
+      err: err
+    }, 'uncaughtException, shutting down.');
+    process.exit(1);
+  });
 
-process.title = 'worker';
+  process.on('SIGTERM', function onSIGTERM () {
+    log.info('received SIGTERM');
+    app.stop(function () {
+      log.info('Application stopped, exiting');
+      setTimeout(function () {
+        process.exit(0);
+      }, 50);
+    });
+  });
 
-process.on('uncaughtException', function (err) {
-  console.error(err);
-  process.exit(1);
-})
-
-var port = process.env.PORT || 3000;
-
-var server = restify.createServer();
-server.use(restify.acceptParser(server.acceptable));
-server.use(restify.queryParser());
-server.use(restify.gzipResponse());
-
-server.get('/', routes.getVersion);
-server.get('/version', routes.getVersion);
-server.get('/healthz', routes.healthz);
-
-server.listen(port, function () {
-  console.log('Listening for HTTP requests on ', server.url);
+  process.on('SIGINT', function onSIGTERM () {
+    log.info('received SIGINT');
+    app.stop(function () {
+      log.info('Application stopped, exiting');
+      setTimeout(function () {
+        process.exit(0);
+      }, 50);
+    });
+  });
+  log.info('Application started successfully');
 });

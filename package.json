@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "GCLOUD_KEYFILE=../infrastructure/secrets/cloudytimemachine-storage-015d01ce2176.json GCLOUD_PROJECT=cloudytimemachine node index.js",
-    "test": "mocha"
+    "test": "mocha && npm run standard",
+    "standard": "semistandard"
   },
   "repository": "https://github.com/cloudytimemachine/worker-screenshot",
   "author": "Ross Kukulinski <ross@kukulinski.com>",
@@ -13,8 +14,9 @@
   "dependencies": {
     "async": "^2.0.1",
     "bull": "^1.0.0-rc2",
-    "dnscache": "0.0.4",
+    "bunyan": "^1.8.1",
     "gcloud": "^0.36.0",
+    "http-shutdown": "^1.1.0",
     "pkginfo": "^0.4.0",
     "restify": "^4.1.0",
     "restify-errors": "^4.2.3",
@@ -24,6 +26,18 @@
   },
   "devDependencies": {
     "k8s-scripts": "^2.1.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.0.2",
+    "semistandard": "^9.0.0"
+  },
+  "semistandard": {
+    "globals": [
+      "describe",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach",
+      "describe",
+      "it"
+    ]
   }
 }

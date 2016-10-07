@@ -1,5 +1,5 @@
-describe('api', function() {
-  it('should do something', function() {
+describe('api', function () {
+  it('should do something', function () {
 
-  })
-})
+  });
+});
