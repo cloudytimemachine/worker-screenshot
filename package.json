@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "GCLOUD_KEYFILE=../infrastructure/secrets/cloudytimemachine-storage-015d01ce2176.json GCLOUD_PROJECT=cloudytimemachine node index.js",
-    "test": "mocha && npm run standard",
+    "test": "BUCKET_NAME=worker_screenshot_unit_tests GCLOUD_KEYFILE=../infrastructure/secrets/cloudytimemachine-storage-015d01ce2176.json GCLOUD_PROJECT=cloudytimemachine mocha && npm run standard",
     "standard": "semistandard"
   },
   "repository": "https://github.com/cloudytimemachine/worker-screenshot",
@@ -27,7 +27,9 @@
   "devDependencies": {
     "k8s-scripts": "^2.1.0",
     "mocha": "^3.0.2",
-    "semistandard": "^9.0.0"
+    "semistandard": "^9.0.0",
+    "should": "^11.1.0",
+    "superagent": "^2.3.0"
   },
   "semistandard": {
     "globals": [
