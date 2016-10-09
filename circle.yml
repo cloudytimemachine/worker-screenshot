@@ -34,7 +34,7 @@ database:
 
 test:
   override:
-    - if [[ -z $CIRCLE_TAG ]] ; then npm test; exit $?; fi
+    - if [[ -z $CIRCLE_TAG ]] ; then npm run test-circleci; exit $?; fi
 
 deployment:
   staging:
