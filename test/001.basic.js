@@ -6,14 +6,15 @@ var request = require('superagent');
 var baseUrl;
 
 describe('Application', function () {
-  this.timeout(10000);
   before(function (callback) {
+    this.timeout(10000);
     app.start(function () {
       baseUrl = 'localhost:' + app.port;
       return callback();
     });
   });
   after(function (callback) {
+    this.timeout(10000);
     baseUrl = null;
     app.stop(callback);
   });
