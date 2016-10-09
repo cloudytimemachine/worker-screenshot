@@ -17,9 +17,11 @@ machine:
 
   services:
     - docker
+    - redis
 
 dependencies:
   pre:
+    - if [[ -z $CIRCLE_TAG ]] ; echo $GCLOUD_KEYDATA | base64 --decode > ./gcloud_key.json; exit $?; fi
     - if [[ -z $CIRCLE_TAG ]] ; then npm install; exit $?; fi
     - if [[ -z $CIRCLE_TAG ]] ; then docker login -e test@test.com -u $REGISTRY_USERNAME -p $REGISTRY_PASSWORD quay.io; exit $?; fi
     - if [[ -z $CIRCLE_TAG ]] ; then docker-build -f deploy/common.config; exit $?; fi

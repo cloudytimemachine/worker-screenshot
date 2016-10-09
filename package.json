@@ -6,6 +6,7 @@
   "scripts": {
     "start": "GCLOUD_KEYFILE=../infrastructure/secrets/cloudytimemachine-storage-015d01ce2176.json GCLOUD_PROJECT=cloudytimemachine node index.js",
     "test": "BUCKET_NAME=worker_screenshot_unit_tests GCLOUD_KEYFILE=../infrastructure/secrets/cloudytimemachine-storage-015d01ce2176.json GCLOUD_PROJECT=cloudytimemachine mocha && npm run standard",
+    "test-circleci": "BUCKET_NAME=worker_screenshot_unit_tests GCLOUD_KEYFILE=./gcloud_key.json GCLOUD_PROJECT=cloudytimemachine mocha && npm run standard",
     "standard": "semistandard"
   },
   "repository": "https://github.com/cloudytimemachine/worker-screenshot",
