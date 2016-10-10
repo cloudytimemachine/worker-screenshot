@@ -7,7 +7,7 @@ ENTRYPOINT ["/usr/local/bin/dumb-init", "--"]
 # libfontconfig is a secret dependency of PhantomJS
 # https://github.com/ariya/phantomjs/issues/10904
 RUN apt-get -qq update && \
-  apt-get -yqq install fontconfig libfontconfig && \
+  apt-get -yqq install fontconfig libfontconfig libicu-dev libfontconfig1-dev libjpeg-dev libfreetype6 && \
   apt-get clean
 
 # RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
