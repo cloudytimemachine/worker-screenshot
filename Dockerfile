@@ -10,8 +10,8 @@ RUN apt-get -qq update && \
   apt-get -yqq install libfontconfig && \
   apt-get clean
 
-RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
-USER nodejs
+# RUN groupadd -r nodejs && useradd -m -r -g nodejs nodejs
+# USER nodejs
 
 RUN mkdir -p /home/nodejs/app
 WORKDIR /home/nodejs/app
