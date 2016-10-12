@@ -22,10 +22,10 @@ spec:
           resources:
             limits:
               cpu: 200m
-              memory: 200Mi
+              memory: 1000Mi
             requests:
               cpu: 200m
-              memory: 100Mi
+              memory: 400Mi
           env:
           - name: GCLOUD_PROJECT
             valueFrom:
@@ -49,13 +49,13 @@ spec:
             httpGet:
               path: /healthz
               port: 3000
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /healthz
               port: 3000
-            initialDelaySeconds: 2
+            initialDelaySeconds: 10
             timeoutSeconds: 5
       volumes:
       - name: gcloud-bucket
