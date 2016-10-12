@@ -27,6 +27,11 @@ spec:
               cpu: 200m
               memory: 400Mi
           env:
+          - name: DELAY
+            valueFrom:
+              configMapKeyRef:
+                name: worker-screenshot
+                key: delay
           - name: GCLOUD_PROJECT
             valueFrom:
               secretKeyRef:

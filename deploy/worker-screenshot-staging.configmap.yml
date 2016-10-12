@@ -4,3 +4,4 @@ metadata:
   name: worker-screenshot
 data:
   bucket-name: screenshots-staging
+  delay: "0"

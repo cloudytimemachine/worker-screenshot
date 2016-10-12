@@ -4,3 +4,4 @@ metadata:
   name: worker-screenshot
 data:
   bucket-name: screenshots-production
+  delay: "0"
