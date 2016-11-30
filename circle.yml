@@ -37,6 +37,10 @@ test:
     - if [[ -z $CIRCLE_TAG ]] ; then npm run test-circleci; exit $?; fi
 
 deployment:
+  nius:
+    branch: nw/local-fs
+    commands:
+      - docker-push -f deploy/common.config
   staging:
     branch: master
     owner: cloudytimemachine
